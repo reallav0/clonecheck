@@ -95,7 +95,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: your-github-username/clonecheck@v1
+      - uses: reallav0/clonecheck@v1
         with:
           format: markdown
           output: clonecheck-report.md

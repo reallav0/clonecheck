@@ -1,0 +1,25 @@
+{
+  "name": "@clonecheck/cli",
+  "version": "0.1.0",
+  "description": "CLI for clonecheck.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "clonecheck": "./dist/index.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "node ../../scripts/build-package.mjs .",
+    "dev": "tsx src/index.ts",
+    "lint": "eslint \"src/**/*.ts\"",
+    "scan": "tsx src/index.ts scan",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@clonecheck/core": "workspace:*",
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.1"
+  }
+}

@@ -1,0 +1,50 @@
+name: Clonecheck
+description: Know if your repo is actually cloneable.
+author: clonecheck contributors
+
+inputs:
+  path:
+    description: Repository path to scan.
+    required: false
+    default: "."
+  format:
+    description: Report format. One of text, json, or markdown.
+    required: false
+    default: markdown
+  output:
+    description: Optional output file path.
+    required: false
+    default: ""
+  strict:
+    description: Exit with code 1 when the clonecheck score is below 75.
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - name: Enable pnpm
+      shell: bash
+      run: corepack enable
+
+    - name: Install clonecheck dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile
+      working-directory: ${{ github.action_path }}/..
+
+    - name: Build clonecheck
+      shell: bash
+      run: pnpm build
+      working-directory: ${{ github.action_path }}/..
+
+    - name: Run clonecheck
+      shell: bash
+      run: |
+        args=(scan "${{ inputs.path }}" --format "${{ inputs.format }}")
+        if [ -n "${{ inputs.output }}" ]; then
+          args+=(--output "${{ inputs.output }}")
+        fi
+        if [ "${{ inputs.strict }}" = "true" ]; then
+          args+=(--strict)
+        fi
+        node "${{ github.action_path }}/../packages/cli/dist/index.js" "${args[@]}"

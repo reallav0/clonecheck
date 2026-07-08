@@ -1,0 +1,41 @@
+{
+  "name": "clonecheck",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Know if your repo is actually cloneable.",
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter @clonecheck/cli dev",
+    "lint": "pnpm -r lint",
+    "scan": "pnpm --filter @clonecheck/cli scan",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "format": "prettier --check .",
+    "format:write": "prettier --write ."
+  },
+  "keywords": [
+    "cli",
+    "developer-experience",
+    "repository",
+    "readme",
+    "github-action"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.7",
+    "eslint": "^9.18.0",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0",
+    "vitest": "^2.1.8"
+  }
+}

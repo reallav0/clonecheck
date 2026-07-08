@@ -1,0 +1,8 @@
+{
+  "name": "env-missing",
+  "private": true,
+  "scripts": {
+    "dev": "node src/app.js",
+    "test": "node --test"
+  }
+}

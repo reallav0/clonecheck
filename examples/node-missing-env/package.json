@@ -1,0 +1,11 @@
+{
+  "name": "node-missing-env",
+  "private": true,
+  "scripts": {
+    "dev": "vite --port 5173",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vite": "^6.0.0"
+  }
+}

@@ -4,7 +4,7 @@
   "private": true,
   "description": "Know if your repo is actually cloneable.",
   "type": "module",
-  "packageManager": "pnpm@11.7.0",
+  "packageManager": "pnpm@10.23.0",
   "engines": {
     "node": ">=20"
   },

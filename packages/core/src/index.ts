@@ -25,7 +25,7 @@ export {
   generateEnvExample,
   parseEnvExampleVars
 } from "./detectors/env.js";
-export { extractReadmeCommands, extractShellBlocks } from "./detectors/readme.js";
+export { extractReadmeCommands, extractShellBlocks, isPackageInstallCommand } from "./detectors/readme.js";
 export { detectDockerComposeEnvVars, extractDockerComposeEnvVars } from "./detectors/dockerCompose.js";
 export { collectSuggestions, scoreChecks, scoreImpactForIssues, statusFromScore } from "./scoring.js";
 export { formatJsonReport, formatMarkdownReport, formatTextReport } from "./reporters/index.js";

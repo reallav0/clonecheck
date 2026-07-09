@@ -45,7 +45,26 @@ Suggestions:
 ## Installation
 
 ```bash
-pnpm add -D @clonecheck/cli
+npm install --save-dev clonecheck
+```
+
+Run without installing:
+
+```bash
+npx clonecheck scan
+```
+
+Scoped package users can also run:
+
+```bash
+npx @clonecheck/cli scan
+```
+
+pnpm users:
+
+```bash
+pnpm add -D clonecheck
+pnpm dlx clonecheck scan
 ```
 
 From this repository:

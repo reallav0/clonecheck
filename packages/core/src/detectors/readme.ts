@@ -106,5 +106,26 @@ export function readmeMentionsRunCommand(commands: ReadmeCommand[]): boolean {
 }
 
 export function readmeMentionsSetupCommand(commands: ReadmeCommand[]): boolean {
-  return commands.some((command) => command.kind === "install" || command.kind === "docker");
+  return commands.some(
+    (command) =>
+      command.kind === "docker" ||
+      (command.kind === "install" && !isPackageInstallCommand(command.command))
+  );
+}
+
+export function isPackageInstallCommand(command: string): boolean {
+  const parts = command.trim().split(/\s+/);
+  const managerIndex = parts.findIndex((part) => part === "npm" || part === "pnpm" || part === "yarn" || part === "bun");
+  if (managerIndex < 0) {
+    return false;
+  }
+
+  const installIndex = parts.findIndex(
+    (part, index) => index > managerIndex && (part === "install" || part === "i")
+  );
+  if (installIndex < 0) {
+    return false;
+  }
+
+  return parts.slice(installIndex + 1).some((part) => !part.startsWith("-") && !part.includes("="));
 }

@@ -1,5 +1,5 @@
 {
-  "name": "clonecheck",
+  "name": "clonecheck-monorepo",
   "version": "0.1.0",
   "private": true,
   "description": "Know if your repo is actually cloneable.",
@@ -12,7 +12,7 @@
     "build": "pnpm -r build",
     "dev": "pnpm --filter @clonecheck/cli dev",
     "lint": "pnpm -r lint",
-    "scan": "pnpm --filter @clonecheck/cli scan",
+    "scan": "pnpm --filter clonecheck scan",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
     "format": "prettier --check .",

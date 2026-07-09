@@ -1,6 +1,6 @@
 import type { ClonecheckCheck } from "../types.js";
 import { detectPackageManager } from "../detectors/packageManager.js";
-import { extractReadmeCommands } from "../detectors/readme.js";
+import { extractReadmeCommands, isPackageInstallCommand } from "../detectors/readme.js";
 import { createIssue, createResult, asPackageJson } from "./helpers.js";
 
 export const packageManagerConsistencyCheck: ClonecheckCheck = {
@@ -33,7 +33,10 @@ export const packageManagerConsistencyCheck: ClonecheckCheck = {
 
     const commands = context.readmeText ? extractReadmeCommands(context.readmeText) : [];
     const mismatches = commands.filter(
-      (command) => command.packageManager && command.packageManager !== detection.manager
+      (command) =>
+        command.packageManager &&
+        command.packageManager !== detection.manager &&
+        !(command.kind === "install" && isPackageInstallCommand(command.command))
     );
 
     const seen = new Set<string>();

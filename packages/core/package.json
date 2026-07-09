@@ -3,6 +3,25 @@
   "version": "0.1.0",
   "description": "Core repository usability scanner for clonecheck.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reallav0/clonecheck.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/reallav0/clonecheck/issues"
+  },
+  "homepage": "https://github.com/reallav0/clonecheck#readme",
+  "keywords": [
+    "clonecheck",
+    "developer-experience",
+    "repository",
+    "readme",
+    "static-analysis"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -11,12 +30,17 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "README.md", "LICENSE"],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "node ../../scripts/build-package.mjs .",
     "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepack": "pnpm build"
   },
   "dependencies": {
     "fast-glob": "^3.3.3",

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@clonecheck/cli": ["../cli/src/index.ts"],
+      "@clonecheck/core": ["../core/src/index.ts"]
+    },
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts"]
+}

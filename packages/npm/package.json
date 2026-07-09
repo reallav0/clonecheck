@@ -1,12 +1,12 @@
 {
-  "name": "@clonecheck/cli",
+  "name": "clonecheck",
   "version": "0.1.0",
-  "description": "CLI for clonecheck.",
+  "description": "Know if your repo is actually cloneable.",
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/reallav0/clonecheck.git",
-    "directory": "packages/cli"
+    "directory": "packages/npm"
   },
   "bugs": {
     "url": "https://github.com/reallav0/clonecheck/issues"
@@ -15,10 +15,12 @@
   "keywords": [
     "clonecheck",
     "cli",
+    "npx",
     "developer-experience",
     "repository",
     "readme"
   ],
+  "license": "MIT",
   "engines": {
     "node": ">=20"
   },
@@ -35,7 +37,6 @@
   },
   "files": ["dist", "README.md", "LICENSE"],
   "publishConfig": {
-    "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
@@ -48,8 +49,6 @@
     "prepack": "pnpm build"
   },
   "dependencies": {
-    "@clonecheck/core": "workspace:*",
-    "commander": "^12.1.0",
-    "picocolors": "^1.1.1"
+    "@clonecheck/cli": "workspace:*"
   }
 }

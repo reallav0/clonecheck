@@ -7,6 +7,7 @@ import {
   extractEnvVarUsages,
   extractReadmeCommands,
   findMissingEnvVars,
+  isPackageInstallCommand,
   parseEnvExampleVars
 } from "../src/index.js";
 import { discoverFiles, readTextFile } from "../src/utils/files.js";
@@ -42,6 +43,13 @@ docker compose up
       "docker compose up"
     ]);
     expect(commands.map((command) => command.kind)).toEqual(["install", "run", "run", "docker"]);
+  });
+
+  it("distinguishes repo installs from package installation examples", () => {
+    expect(isPackageInstallCommand("npm install")).toBe(false);
+    expect(isPackageInstallCommand("pnpm install --frozen-lockfile")).toBe(false);
+    expect(isPackageInstallCommand("npm install --save-dev clonecheck")).toBe(true);
+    expect(isPackageInstallCommand("pnpm add -D clonecheck")).toBe(false);
   });
 });
 

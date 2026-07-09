@@ -1,6 +1,7 @@
 import type { ClonecheckCheck } from "../types.js";
 import {
   extractReadmeCommands,
+  isPackageInstallCommand,
   readmeMentionsRunCommand,
   readmeMentionsSetupCommand
 } from "../detectors/readme.js";
@@ -39,6 +40,7 @@ export const readmeCommandsCheck: ClonecheckCheck = {
       const mismatchedManagers = Array.from(
         new Set(
           commands
+            .filter((command) => !(command.kind === "install" && isPackageInstallCommand(command.command)))
             .map((command) => command.packageManager)
             .filter((manager) => manager && manager !== context.detectedPackageManager)
         )
